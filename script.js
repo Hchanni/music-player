@@ -1,7 +1,21 @@
+const image = document.querySelector('img')
+const title = document.getElementById('title');
+const artist = document.getElementById('artist')
 const music = document.querySelector('audio');
 const prevBtn = document.getElementById('prev');
 const playBtn = document.getElementById('play');
 const nextBtn = document.getElementById('next');
+
+
+// Music
+const songs = [
+    {
+        name: 'jacinto-1',
+        displayName: 'Electric Chill Machine',
+        artist: 'Jacinto Design',
+
+    }
+]
 
 // Check Playing 
 
@@ -33,3 +47,15 @@ function pauseSong(){
 // Play or Pause Listener 
 
 playBtn.addEventListener('click', () =>  (isPlaying ? pauseSong() : playSong() ));
+
+// Update DOM
+function loadSong(song){
+    title.textContent = song.displayName;
+    artist.textContent = song.artist;
+    music.src = `music/${song.name}.mp3`;
+    image.src = `img/${song.name}.jpg`;
+
+}
+
+// On Load - Select First Song 
+loadSong(songs[0]);
